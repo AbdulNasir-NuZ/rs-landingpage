@@ -51,40 +51,40 @@ export default function MobileDownload() {
                 ))}
               </StaggerContainer>
 
-              <div className="flex flex-col gap-5 sm:flex-row sm:items-center pt-2">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center pt-4">
                 <div className="relative">
                   <m.div
-                    className="opacity-70 cursor-not-allowed select-none"
+                    className="cursor-pointer select-none"
                     whileHover={badgeHoverSettings}
                     whileTap={reducedMotion ? undefined : { scale: 0.98 }}
                     transition={{ duration: 0.4, ease: premiumEase }}
                   >
-                    <svg className="h-11 w-auto" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="120" height="40" rx="6" fill="black" stroke="#334155" strokeWidth="0.8"/>
-                      <path d="M19.16 23.33c-.09 2.06 1.7 3.03 1.78 3.12-.09.27-.36.8-0.71 1.34-.62.89-1.25 1.88-2.23 1.88-.98 0-1.25-.62-2.41-.62-1.07 0-1.43.53-2.32.62-.89.09-1.6-.89-2.23-1.78-1.25-1.78-2.14-5.09-.89-7.32.62-1.07 1.78-1.78 2.94-1.78.98 0 1.87.71 2.41.71.53 0 1.7-.8 2.85-.71.45.09 1.78.18 2.68 1.43-.09.09-1.6.98-1.6 2.85M17.64 13.87c.53-.62.89-1.52.8-2.41-.8.09-1.7.53-2.23 1.16-.45.53-.8 1.43-.71 2.32.89.09 1.7-.45 2.14-1.07" fill="white"/>
-                      <text x="34" y="14" fill="white" fontSize="4.8" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="500" letterSpacing="0.1">Download on the</text>
-                      <text x="34" y="27" fill="white" fontSize="10" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="700" letterSpacing="0.1">App Store</text>
+                    <svg className="h-16 w-auto" viewBox="0 0 180 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="180" height="60" rx="10" fill="#000000" stroke="#404040" strokeWidth="1"/>
+                      <path d="M29 35.5c-.13 3.1 2.55 4.55 2.67 4.68-.13.4-.54 1.2-1.07 2.01-.93 1.34-1.87 2.82-3.35 2.82-1.47 0-1.87-.93-3.61-.93-1.6 0-2.14.8-3.48.93-1.34.13-2.41-1.34-3.35-2.67-1.87-2.67-3.21-7.63-1.34-10.97.93-1.6 2.67-2.67 4.41-2.67 1.47 0 2.81 1.07 3.61 1.07.8 0 2.54-1.2 4.28-1.07.67.13 2.67.27 4.02 2.14-.13.13-2.41 1.47-2.41 4.28M27.7 21.3c.8-.93 1.34-2.28 1.2-3.61-1.2.13-2.54.8-3.35 1.74-.67.8-1.2 2.14-1.07 3.48 1.34.13 2.54-.67 3.22-1.61" fill="white"/>
+                      <text x="50" y="22" fill="white" fontSize="8" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="400" letterSpacing="0.2">Download on the</text>
+                      <text x="50" y="42" fill="white" fontSize="16" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="600" letterSpacing="0.2">App Store</text>
                     </svg>
                   </m.div>
                 </div>
 
                 <div className="relative">
                   <m.div
-                    className="opacity-70 cursor-not-allowed select-none"
+                    className="cursor-pointer select-none"
                     whileHover={badgeHoverSettings}
                     whileTap={reducedMotion ? undefined : { scale: 0.98 }}
                     transition={{ duration: 0.4, ease: premiumEase }}
                   >
-                    <svg className="h-11 w-auto" viewBox="0 0 135 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="135" height="40" rx="6" fill="black" stroke="#334155" strokeWidth="0.8"/>
-                      <g transform="translate(10, 8) scale(1.1)">
-                        <path d="M1.5 1.5v21l11.5-10.5-11.5-10.5z" fill="#00F0FF"/>
-                        <path d="M1.5 1.5l11.5 10.5 2.8-2.8-14.3-7.7z" fill="#FFB900"/>
-                        <path d="M1.5 22.5l11.5-10.5 2.8 2.8-14.3 7.7z" fill="#FF001F"/>
-                        <path d="M13 12l4.8-4.8-2-2-14.3 8.3 11.5 10.5 0-12z" fill="#00E065"/>
+                    <svg className="h-16 w-auto" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="200" height="60" rx="10" fill="#000000" stroke="#404040" strokeWidth="1"/>
+                      <g transform="translate(14, 10) scale(1.8)">
+                        <path d="M1 1v20l10-10L1 1z" fill="#00C3FF"/>
+                        <path d="M1 1l10 10 3-3L1 1z" fill="#FFBC00"/>
+                        <path d="M1 21l10-10 3 3L1 21z" fill="#FF3C41"/>
+                        <path d="M11 11l5-5-2-1L1 11l10 10 0-10z" fill="#2EC866"/>
                       </g>
-                      <text x="38" y="14" fill="white" fontSize="4.8" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="500" letterSpacing="0.1">GET IT ON</text>
-                      <text x="38" y="27" fill="white" fontSize="10" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="700" letterSpacing="0.1">Google Play</text>
+                      <text x="56" y="22" fill="white" fontSize="8" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="400" letterSpacing="0.3">GET IT ON</text>
+                      <text x="56" y="42" fill="white" fontSize="16" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="600" letterSpacing="0.2">Google Play</text>
                     </svg>
                   </m.div>
                 </div>

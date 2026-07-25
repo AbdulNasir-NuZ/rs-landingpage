@@ -32,11 +32,11 @@ export default function Comparison() {
                 key={item.traditional}
                 className="grid grid-cols-2 gap-4 px-4 py-4 transition-colors duration-300 hover:bg-white/[0.02] first:pt-4 items-center"
               >
-                <div className="text-sm sm:text-base text-muted-foreground/70 flex items-center gap-2">
+                <div className="text-sm sm:text-base text-muted-foreground/70 flex items-center gap-3 pl-4 sm:pl-8">
                   <X className="h-4 w-4 text-destructive/70 shrink-0" />
                   <span>{item.traditional}</span>
                 </div>
-                <div className="text-sm sm:text-base font-semibold text-foreground flex items-center gap-2">
+                <div className="text-sm sm:text-base font-semibold text-foreground flex items-center gap-3 pl-4 sm:pl-8">
                   <Check className="h-4 w-4 text-primary shrink-0" />
                   <span>{item.rightsignal}</span>
                 </div>
