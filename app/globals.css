@@ -47,109 +47,109 @@
 
 :root {
   color-scheme: dark;
-  --background: #000000;
-  --foreground: #ffffff;
-  --card: #0a0a0a;
-  --card-foreground: #ffffff;
-  --popover: #0a0a0a;
-  --popover-foreground: #ffffff;
-  --primary: #ffffff;
-  --primary-foreground: #000000;
-  --secondary: #171717;
-  --secondary-foreground: #ffffff;
-  --muted: #262626;
-  --muted-foreground: #a3a3a3;
-  --accent: #171717;
+  --background: #0d0f1a;
+  --foreground: #dbdbe1;
+  --card: #13152a;
+  --card-foreground: #dbdbe1;
+  --popover: #13152a;
+  --popover-foreground: #dbdbe1;
+  --primary: #6A53FF;
+  --primary-foreground: #ffffff;
+  --secondary: #1a1d35;
+  --secondary-foreground: #dbdbe1;
+  --muted: #1e2140;
+  --muted-foreground: #9DA5AF;
+  --accent: #8B7AFF;
   --accent-foreground: #ffffff;
-  --destructive: #ff3b30;
-  --border: #262626;
-  --input: #262626;
-  --ring: #ffffff;
-  --chart-1: #6366f1;
-  --chart-2: #818cf8;
-  --chart-3: #a5b4fc;
-  --chart-4: #c7d2fe;
-  --chart-5: #e0e7ff;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: #1a1d35;
+  --ring: #6A53FF;
+  --chart-1: #6A53FF;
+  --chart-2: #8B7AFF;
+  --chart-3: #BEB4FF;
+  --chart-4: #DED9FF;
+  --chart-5: #EEECFF;
   --radius: 0.75rem;
-  --sidebar: #1a2847;
-  --sidebar-foreground: #f8fafc;
-  --sidebar-primary: #6366f1;
+  --sidebar: #13152a;
+  --sidebar-foreground: #dbdbe1;
+  --sidebar-primary: #6A53FF;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #818cf8;
+  --sidebar-accent: #8B7AFF;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #334155;
-  --sidebar-ring: #6366f1;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #6A53FF;
 }
 
 .dark {
   color-scheme: dark;
-  --background: #0f1428;
-  --foreground: #f8fafc;
-  --card: #1a2847;
-  --card-foreground: #f8fafc;
-  --popover: #1a2847;
-  --popover-foreground: #f8fafc;
-  --primary: #6366f1;
+  --background: #0d0f1a;
+  --foreground: #dbdbe1;
+  --card: #13152a;
+  --card-foreground: #dbdbe1;
+  --popover: #13152a;
+  --popover-foreground: #dbdbe1;
+  --primary: #6A53FF;
   --primary-foreground: #ffffff;
-  --secondary: #1e3a8a;
-  --secondary-foreground: #f8fafc;
-  --muted: #64748b;
-  --muted-foreground: #cbd5e1;
-  --accent: #818cf8;
-  --accent-foreground: #0f1428;
+  --secondary: #1a1d35;
+  --secondary-foreground: #dbdbe1;
+  --muted: #1e2140;
+  --muted-foreground: #9DA5AF;
+  --accent: #8B7AFF;
+  --accent-foreground: #ffffff;
   --destructive: #ef4444;
-  --border: #334155;
-  --input: #1a2847;
-  --ring: #6366f1;
-  --chart-1: #6366f1;
-  --chart-2: #818cf8;
-  --chart-3: #a5b4fc;
-  --chart-4: #c7d2fe;
-  --chart-5: #e0e7ff;
-  --sidebar: #1a2847;
-  --sidebar-foreground: #f8fafc;
-  --sidebar-primary: #6366f1;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: #1a1d35;
+  --ring: #6A53FF;
+  --chart-1: #6A53FF;
+  --chart-2: #8B7AFF;
+  --chart-3: #BEB4FF;
+  --chart-4: #DED9FF;
+  --chart-5: #EEECFF;
+  --sidebar: #13152a;
+  --sidebar-foreground: #dbdbe1;
+  --sidebar-primary: #6A53FF;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #818cf8;
+  --sidebar-accent: #8B7AFF;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #334155;
-  --sidebar-ring: #6366f1;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #6A53FF;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
     color-scheme: dark;
-    --background: #0f1428;
-    --foreground: #f8fafc;
-    --card: #1a2847;
-    --card-foreground: #f8fafc;
-    --popover: #1a2847;
-    --popover-foreground: #f8fafc;
-    --primary: #6366f1;
+    --background: #0d0f1a;
+    --foreground: #dbdbe1;
+    --card: #13152a;
+    --card-foreground: #dbdbe1;
+    --popover: #13152a;
+    --popover-foreground: #dbdbe1;
+    --primary: #6A53FF;
     --primary-foreground: #ffffff;
-    --secondary: #1e3a8a;
-    --secondary-foreground: #f8fafc;
-    --muted: #64748b;
-    --muted-foreground: #cbd5e1;
-    --accent: #818cf8;
-    --accent-foreground: #0f1428;
+    --secondary: #1a1d35;
+    --secondary-foreground: #dbdbe1;
+    --muted: #1e2140;
+    --muted-foreground: #9DA5AF;
+    --accent: #8B7AFF;
+    --accent-foreground: #ffffff;
     --destructive: #ef4444;
-    --border: #334155;
-    --input: #1a2847;
-    --ring: #6366f1;
-    --chart-1: #6366f1;
-    --chart-2: #818cf8;
-    --chart-3: #a5b4fc;
-    --chart-4: #c7d2fe;
-    --chart-5: #e0e7ff;
-    --sidebar: #1a2847;
-    --sidebar-foreground: #f8fafc;
-    --sidebar-primary: #6366f1;
+    --border: rgba(255, 255, 255, 0.1);
+    --input: #1a1d35;
+    --ring: #6A53FF;
+    --chart-1: #6A53FF;
+    --chart-2: #8B7AFF;
+    --chart-3: #BEB4FF;
+    --chart-4: #DED9FF;
+    --chart-5: #EEECFF;
+    --sidebar: #13152a;
+    --sidebar-foreground: #dbdbe1;
+    --sidebar-primary: #6A53FF;
     --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #818cf8;
+    --sidebar-accent: #8B7AFF;
     --sidebar-accent-foreground: #ffffff;
-    --sidebar-border: #334155;
-    --sidebar-ring: #6366f1;
+    --sidebar-border: rgba(255, 255, 255, 0.1);
+    --sidebar-ring: #6A53FF;
   }
 }
 
@@ -201,6 +201,24 @@
 @layer utilities {
   .noise-overlay {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  }
+
+  .bg-grid-pattern-coral {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 100, 150, 0.06) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 100, 150, 0.06) 1px, transparent 1px);
+  }
+
+  .bg-grid-pattern-green {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(46, 200, 120, 0.06) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(46, 200, 120, 0.06) 1px, transparent 1px);
   }
 
   .motion-card {

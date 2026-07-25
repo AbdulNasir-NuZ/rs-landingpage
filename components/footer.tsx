@@ -1,77 +1,82 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-
-const linkClass = 'relative text-sm text-muted-foreground transition-colors hover:text-foreground after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-foreground/70 after:transition-transform after:duration-300 hover:after:scale-x-100'
-const quietLinkClass = 'text-sm text-muted-foreground hover:text-foreground transition-colors'
+import { m, useReducedMotion } from 'framer-motion'
+import { premiumEase } from '@/components/motion/animated-section'
+import { ArrowRight } from 'lucide-react'
 
 export default function Footer() {
+  const reducedMotion = useReducedMotion()
+
   return (
-    <footer className="relative border-t border-border/20 bg-card/30 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto px-6 py-8 sm:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 relative">
-                <Image
-                  src="/logo.png"
-                  alt="RightSignal"
-                  width={32}
-                  height={32}
-                  className="object-contain"
-                />
-              </div>
-              <span className="font-semibold text-foreground">RightSignal</span>
-            </Link>
-            <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-              Where signals align. A global ecosystem for founders, investors, and professionals to connect, collaborate, and grow together.
-            </p>
-            <div className="flex gap-4">
-              <a href="https://app.rightsignal.social" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-primary/10 hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 flex items-center justify-center hover:-translate-y-0.5" aria-label="Facebook">
-                <span className="text-xs font-bold text-primary">f</span>
-              </a>
-              <a href="https://app.rightsignal.social" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-primary/10 hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 flex items-center justify-center hover:-translate-y-0.5" aria-label="Twitter">
-                <span className="text-xs font-bold text-primary">x</span>
-              </a>
-              <a href="https://app.rightsignal.social" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-lg bg-primary/10 hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 flex items-center justify-center hover:-translate-y-0.5" aria-label="LinkedIn">
-                <span className="text-xs font-bold text-primary">in</span>
-              </a>
-            </div>
+    <footer className="relative bg-[#07080e] text-foreground overflow-hidden">
+      {/* Upper CTA Section (Matching Screenshot 2 & 3) */}
+      <div className="relative py-28 md:py-40 text-center px-6 overflow-hidden">
+        {/* Luminous Purple Glow Dome Underneath - Animated on Visit */}
+        <m.div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1000px] h-[350px] sm:h-[450px] bg-gradient-to-t from-[#6A53FF]/60 via-[#8B7AFF]/35 to-transparent blur-[140px] rounded-full pointer-events-none"
+          initial={reducedMotion ? false : { opacity: 0, scale: 0.8 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 1.2, ease: premiumEase }}
+        />
+
+        <m.div
+          className="relative z-10 max-w-3xl mx-auto flex flex-col items-center"
+          initial={reducedMotion ? false : { opacity: 0, y: 30 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: premiumEase }}
+        >
+          {/* Clean Large Logo */}
+          <div className="relative mb-8 h-16 w-16 sm:h-20 sm:w-20 drop-shadow-[0_0_35px_rgba(106,83,255,0.6)]">
+            <Image src="/logo.png" alt="RightSignal Logo" fill className="object-contain" priority />
           </div>
 
-          <div>
-            <h4 className="font-semibold text-foreground mb-4 text-sm">Product</h4>
-            <ul className="space-y-3">
-              <li><Link href="#features" className={linkClass}>Features</Link></li>
-              <li><a href="https://app.rightsignal.social" target="_blank" rel="noopener noreferrer" className={linkClass}>Pricing</a></li>
-              <li><Link href="#why-rightsignal" className={linkClass}>Security</Link></li>
-              <li><Link href="#journey" className={linkClass}>Roadmap</Link></li>
-            </ul>
-          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6">
+            Get started today for free
+          </h2>
 
-          <div>
-            <h4 className="font-semibold text-foreground mb-4 text-sm">Company</h4>
-            <ul className="space-y-3">
-              <li><Link href="#ecosystem" className={linkClass}>About</Link></li>
-              <li><a href="https://app.rightsignal.social" target="_blank" rel="noopener noreferrer" className={linkClass}>Blog</a></li>
-              <li><a href="mailto:hello@rightsignal.social" className={linkClass}>Contact</a></li>
-              <li><a href="https://app.rightsignal.social" target="_blank" rel="noopener noreferrer" className={linkClass}>Careers</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t border-border/20 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © 2026 RightSignal. All rights reserved.
+          <p className="text-base sm:text-lg text-[#9DA5AF] max-w-xl mb-10 leading-relaxed font-normal">
+            Streamline your growth with effortless ecosystem integration for builders, founders, and investors.
           </p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-            <a href="https://app.rightsignal.social/privacy" target="_blank" rel="noopener noreferrer" className={quietLinkClass}>
+
+          <a
+            href="https://app.rightsignal.social"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#07080e] shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 hover:bg-[#BEB4FF] hover:shadow-[0_0_40px_rgba(106,83,255,0.6)] hover:scale-105 active:scale-95"
+          >
+            <span>Get started</span>
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </m.div>
+      </div>
+
+      {/* Ultra-Sleek Minimalist Bottom Bar (Matching Screenshot 2 & 3 Bottom Bar) */}
+      <div className="border-t border-white/10 bg-[#05060b] py-8 px-6 relative z-10">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#9DA5AF]">
+          <div className="flex items-center gap-3">
+            <div className="relative h-6 w-6">
+              <Image src="/logo.png" alt="RightSignal Logo" fill className="object-contain" />
+            </div>
+            <span className="font-medium">RightSignal Community © 2026</span>
+          </div>
+
+          <p className="hidden lg:block text-[11px] text-[#9DA5AF]/50">
+            Creating seamless growth connections across the globe all in one ecosystem
+          </p>
+
+          <div className="flex items-center gap-6">
+            <a href="https://app.rightsignal.social/terms" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+              Terms of service
+            </a>
+            <a href="https://app.rightsignal.social/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
               Privacy Policy
             </a>
-            <a href="https://app.rightsignal.social/terms" target="_blank" rel="noopener noreferrer" className={quietLinkClass}>
-              Terms of Service
-            </a>
-            <a href="https://app.rightsignal.social/cookies" target="_blank" rel="noopener noreferrer" className={quietLinkClass}>
-              Cookie Settings
+            <a href="mailto:hello@rightsignal.social" className="hover:text-white transition-colors">
+              Contact Us
             </a>
           </div>
         </div>

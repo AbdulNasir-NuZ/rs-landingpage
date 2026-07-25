@@ -14,9 +14,9 @@ export default function SpotlightCard({
   const reducedMotion = useReducedMotion()
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
-  const rotateX = useSpring(useMotionValue(0), { stiffness: 180, damping: 22 })
-  const rotateY = useSpring(useMotionValue(0), { stiffness: 180, damping: 22 })
-  const background = useMotionTemplate`radial-gradient(220px circle at ${mouseX}px ${mouseY}px, rgba(255, 255, 255, 0.08), transparent 70%)`
+  const rotateX = useSpring(useMotionValue(0), { stiffness: 220, damping: 24 })
+  const rotateY = useSpring(useMotionValue(0), { stiffness: 220, damping: 24 })
+  const edgeSpotlight = useMotionTemplate`radial-gradient(280px circle at ${mouseX}px ${mouseY}px, rgba(139, 122, 255, 0.2), transparent 80%)`
 
   const onMouseMove = (event: MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect()
@@ -37,16 +37,22 @@ export default function SpotlightCard({
 
   return (
     <m.div
-      className={`group relative overflow-hidden ${className}`}
+      className={`group relative overflow-hidden backdrop-blur-xl transition-all duration-500 ${className}`}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d', willChange: reducedMotion ? undefined : 'transform', transform: 'translate3d(0,0,0)' }}
-      whileHover={reducedMotion ? undefined : { y: -8, scale: 1.02, boxShadow: '0 24px 70px rgba(0, 0, 0, 0.4)' }}
-      transition={{ duration: 0.55, ease: premiumEase }}
+      whileHover={reducedMotion ? undefined : { y: -6, scale: 1.015 }}
+      transition={{ duration: 0.5, ease: premiumEase }}
     >
-      <m.div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background }} />
-      <div className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-white/0 transition-all duration-300 group-hover:ring-white/10" />
-      <div className="relative z-10">{children}</div>
+      {/* Edge border glowing stroke spotlight */}
+      <m.div
+        className="pointer-events-none absolute -inset-px rounded-[inherit] opacity-0 transition-opacity duration-500 group-hover:opacity-100 p-px"
+        style={{ background: edgeSpotlight }}
+      />
+      {/* Top border edge reflex highlight */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-40 group-hover:opacity-100 transition-opacity" />
+      
+      <div className="relative z-10 h-full w-full">{children}</div>
     </m.div>
   )
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Bell, Handshake, Search, UserRound } from 'lucide-react'
 import SpotlightCard from '@/components/motion/spotlight-card'
 import { StaggerContainer, StaggerItem } from '@/components/motion/stagger'
@@ -18,80 +19,87 @@ export default function MobileDownload() {
   const badgeHoverSettings = reducedMotion ? undefined : {
     y: -3,
     scale: 1.02,
-    boxShadow: '0 12px 30px rgba(99, 102, 241, 0.15)',
+    boxShadow: '0 12px 30px rgba(106, 83, 255, 0.25)',
   }
 
   return (
-    <section id="mobile-app" className="relative overflow-hidden py-20 md:py-32 bg-transparent">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="rounded-xl border border-border/40 bg-card/45 p-6 shadow-2xl shadow-black/10 backdrop-blur-md sm:p-8 lg:p-10">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div>
-
-              <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Download the RightSignal App
+    <section id="mobile-app" className="relative overflow-hidden py-24 md:py-32 bg-transparent">
+      <div className="mx-auto max-w-6xl px-6 relative z-10">
+        <SpotlightCard className="motion-card rounded-3xl border border-white/10 bg-[#13152a]/60 p-8 shadow-[0_0_40px_rgba(106,83,255,0.08)] backdrop-blur-xl sm:p-12 lg:p-16">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div className="space-y-6">
+              <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-[#8B7AFF] shadow-sm">
+                Mobile App ✦
+              </div>
+              <h2 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
+                Download the <br /> <span className="bg-gradient-to-r from-[#BEB4FF] to-[#6A53FF] bg-clip-text text-transparent">RightSignal App</span>
               </h2>
-              <div className="mt-5 space-y-2 text-lg text-muted-foreground">
+              <div className="mt-6 space-y-3 text-lg text-[#9DA5AF] font-medium">
                 <p>Opportunities Don&apos;t Wait.</p>
                 <p>Stay connected wherever you are.</p>
               </div>
             </div>
 
-            <div className="space-y-6">
-              <StaggerContainer className="grid gap-3 sm:grid-cols-2">
+            <div className="space-y-8">
+              <StaggerContainer className="grid gap-4 sm:grid-cols-2">
                 {appFeatures.map((feature) => (
                   <StaggerItem key={feature.text}>
-                    <SpotlightCard className="motion-card rounded-lg border border-border/40 bg-background/35 p-4 text-muted-foreground transition-colors duration-300 hover:border-primary/50 hover:bg-card/80">
-                      <div className="flex items-center gap-3">
-                        <feature.icon className="size-5 shrink-0 text-primary transition-transform duration-500 group-hover:scale-110" strokeWidth={1.8} aria-hidden="true" />
-                        <span className="whitespace-nowrap">{feature.text}</span>
+                    <div className="flex items-center gap-4 rounded-2xl border border-white/5 bg-white/5 p-4 transition-colors duration-300 hover:border-[#8B7AFF]/30 hover:bg-white/10">
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#6A53FF]/20 text-[#BEB4FF] shadow-[0_0_10px_rgba(106,83,255,0.2)]">
+                        <feature.icon className="size-5 transition-transform duration-500 group-hover:scale-110" strokeWidth={1.8} aria-hidden="true" />
                       </div>
-                    </SpotlightCard>
+                      <span className="font-semibold text-foreground">{feature.text}</span>
+                    </div>
                   </StaggerItem>
                 ))}
               </StaggerContainer>
 
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center pt-4">
-                <div className="relative">
-                  <m.div
-                    className="cursor-pointer select-none"
-                    whileHover={badgeHoverSettings}
-                    whileTap={reducedMotion ? undefined : { scale: 0.98 }}
-                    transition={{ duration: 0.4, ease: premiumEase }}
-                  >
-                    <svg className="h-16 w-auto" viewBox="0 0 180 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="180" height="60" rx="10" fill="#000000" stroke="#404040" strokeWidth="1"/>
-                      <path d="M29 35.5c-.13 3.1 2.55 4.55 2.67 4.68-.13.4-.54 1.2-1.07 2.01-.93 1.34-1.87 2.82-3.35 2.82-1.47 0-1.87-.93-3.61-.93-1.6 0-2.14.8-3.48.93-1.34.13-2.41-1.34-3.35-2.67-1.87-2.67-3.21-7.63-1.34-10.97.93-1.6 2.67-2.67 4.41-2.67 1.47 0 2.81 1.07 3.61 1.07.8 0 2.54-1.2 4.28-1.07.67.13 2.67.27 4.02 2.14-.13.13-2.41 1.47-2.41 4.28M27.7 21.3c.8-.93 1.34-2.28 1.2-3.61-1.2.13-2.54.8-3.35 1.74-.67.8-1.2 2.14-1.07 3.48 1.34.13 2.54-.67 3.22-1.61" fill="white"/>
-                      <text x="50" y="22" fill="white" fontSize="8" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="400" letterSpacing="0.2">Download on the</text>
-                      <text x="50" y="42" fill="white" fontSize="16" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="600" letterSpacing="0.2">App Store</text>
-                    </svg>
-                  </m.div>
-                </div>
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-center pt-8">
+                {/* Apple App Store Badge */}
+                <m.a
+                  href="https://app.rightsignal.social"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex items-center gap-4 rounded-2xl bg-black px-6 py-3.5 border border-white/20 shadow-xl transition-all duration-300 hover:border-[#6A53FF] hover:shadow-[0_0_25px_rgba(106,83,255,0.35)] hover:scale-105 active:scale-95"
+                  whileHover={badgeHoverSettings}
+                  whileTap={reducedMotion ? undefined : { scale: 0.98 }}
+                >
+                  <svg className="h-8 w-8 fill-white shrink-0" viewBox="0 0 384 512">
+                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-92.1zm-56.1-177.1c25.4-30.8 22.3-59.5 21.6-67.6-22.6 1.3-50.5 15.5-66.2 33.8-16.6 19.3-24.5 45.4-21.7 66.8 25.6.8 50.7-13.8 66.3-33z"/>
+                  </svg>
+                  <div className="flex flex-col text-left">
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#9DA5AF]">Download on the</span>
+                    <span className="text-lg font-bold text-white tracking-wide leading-none mt-1">App Store</span>
+                  </div>
+                </m.a>
 
-                <div className="relative">
-                  <m.div
-                    className="cursor-pointer select-none"
-                    whileHover={badgeHoverSettings}
-                    whileTap={reducedMotion ? undefined : { scale: 0.98 }}
-                    transition={{ duration: 0.4, ease: premiumEase }}
-                  >
-                    <svg className="h-16 w-auto" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="200" height="60" rx="10" fill="#000000" stroke="#404040" strokeWidth="1"/>
-                      <g transform="translate(14, 10) scale(1.8)">
-                        <path d="M1 1v20l10-10L1 1z" fill="#00C3FF"/>
-                        <path d="M1 1l10 10 3-3L1 1z" fill="#FFBC00"/>
-                        <path d="M1 21l10-10 3 3L1 21z" fill="#FF3C41"/>
-                        <path d="M11 11l5-5-2-1L1 11l10 10 0-10z" fill="#2EC866"/>
-                      </g>
-                      <text x="56" y="22" fill="white" fontSize="8" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="400" letterSpacing="0.3">GET IT ON</text>
-                      <text x="56" y="42" fill="white" fontSize="16" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fontWeight="600" letterSpacing="0.2">Google Play</text>
-                    </svg>
-                  </m.div>
-                </div>
+                {/* Google Play Store Badge */}
+                <m.a
+                  href="https://app.rightsignal.social"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex items-center gap-4 rounded-2xl bg-black px-6 py-3.5 border border-white/20 shadow-xl transition-all duration-300 hover:border-[#00C3FF] hover:shadow-[0_0_25px_rgba(0,195,255,0.35)] hover:scale-105 active:scale-95"
+                  whileHover={badgeHoverSettings}
+                  whileTap={reducedMotion ? undefined : { scale: 0.98 }}
+                >
+                  <div className="relative h-8 w-8 shrink-0 rounded-lg overflow-hidden flex items-center justify-center">
+                    <Image
+                      src="/google-play-v2.png"
+                      alt="Google Play Logo"
+                      fill
+                      className="object-contain rounded-lg"
+                      priority
+                    />
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#9DA5AF]">GET IT ON</span>
+                    <span className="text-lg font-bold text-white tracking-wide leading-none mt-1">Google Play</span>
+                  </div>
+                </m.a>
               </div>
             </div>
           </div>
-        </div>
+        </SpotlightCard>
       </div>
     </section>
   )

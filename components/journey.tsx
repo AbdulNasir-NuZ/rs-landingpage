@@ -16,27 +16,30 @@ export default function Journey() {
   ]
 
   return (
-    <section id="journey" className="py-20 md:py-32 bg-transparent">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="space-y-6 mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground text-balance">
-            Your Journey Starts Here
+    <section id="journey" className="py-24 md:py-32 relative bg-transparent">
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col items-center text-center space-y-6 mb-20">
+          <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-[#8B7AFF] shadow-sm">
+            Roadmap ✦
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground text-balance">
+            Your Journey <span className="bg-gradient-to-r from-[#BEB4FF] to-[#6A53FF] bg-clip-text text-transparent">Starts Here</span>
           </h2>
         </div>
 
-        <div className="relative mx-auto max-w-2xl">
-          <div className="absolute bottom-8 left-5 top-8 w-px bg-border/40 sm:left-1/2 sm:-translate-x-1/2" aria-hidden="true" />
+        <div className="relative mx-auto max-w-4xl">
+          <div className="absolute bottom-8 left-5 top-8 w-px bg-white/10 sm:left-1/2 sm:-translate-x-1/2" aria-hidden="true" />
           {steps.map((step, index) => (
             <m.div
               key={step}
-              className={`relative flex items-center gap-5 pb-6 last:pb-0 sm:gap-8 ${index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}
+              className={`relative flex items-center gap-6 pb-10 last:pb-0 sm:gap-12 ${index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}
               initial={reducedMotion ? false : { opacity: 0, y: 28 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.45 }}
               transition={{ duration: 0.7, ease: premiumEase }}
             >
               <m.div
-                className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border border-primary/45 bg-background text-sm font-semibold text-primary shadow-lg shadow-primary/10 sm:absolute sm:left-1/2 sm:-translate-x-1/2"
+                className="relative z-10 flex size-11 shrink-0 items-center justify-center rounded-full border border-[#8B7AFF]/40 bg-[#13152a] text-sm font-extrabold text-[#BEB4FF] shadow-[0_0_20px_rgba(106,83,255,0.4)] sm:absolute sm:left-1/2 sm:-translate-x-1/2"
                 initial={reducedMotion ? false : { scale: 0.86, opacity: 0 }}
                 whileInView={reducedMotion ? undefined : { scale: 1, opacity: 1 }}
                 viewport={{ once: true, amount: 0.6 }}
@@ -47,8 +50,8 @@ export default function Journey() {
 
               <div className="hidden flex-1 sm:block" aria-hidden="true" />
 
-              <SpotlightCard className="motion-card flex-1 rounded-xl border border-border/40 bg-card/50 px-6 py-5 transition-colors duration-300 hover:border-primary/50 hover:bg-card/80 sm:max-w-[18rem]">
-                <p className="text-lg font-semibold text-foreground">{step}</p>
+              <SpotlightCard className="motion-card flex-1 sm:max-w-sm rounded-3xl border border-white/10 bg-[#13152a]/70 p-6 sm:p-7 backdrop-blur-2xl transition-all duration-300 hover:border-[#8B7AFF]/50 hover:shadow-[0_0_35px_rgba(139,122,255,0.25)] shadow-2xl">
+                <p className="text-base sm:text-lg font-extrabold tracking-tight text-foreground whitespace-nowrap">{step}</p>
               </SpotlightCard>
             </m.div>
           ))}

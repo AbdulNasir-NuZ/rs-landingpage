@@ -1,81 +1,110 @@
 'use client'
 
-import Image from 'next/image'
-import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
-import { useEffect, useState } from 'react'
-import ParallaxFrame from '@/components/motion/parallax-frame'
+import SpotlightCard from '@/components/motion/spotlight-card'
+import { m, useReducedMotion } from 'framer-motion'
 import { premiumEase } from '@/components/motion/animated-section'
-
-const ecosystemImages = [
-  {
-    src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80',
-    alt: 'Professionals collaborating in a modern workspace',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80',
-    alt: 'Founders collaborating during a startup meeting',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80',
-    alt: 'Investor and founder discussing business growth',
-  },
-]
+import { Rocket, Zap, Building2, GraduationCap, Laptop, TestTube2, Star, Globe, Users, Calendar } from 'lucide-react'
 
 export default function Ecosystem() {
-  const [activeImage, setActiveImage] = useState(0)
   const reducedMotion = useReducedMotion()
 
-  useEffect(() => {
-    if (reducedMotion) return
-
-    const timer = window.setInterval(() => {
-      setActiveImage((current) => (current + 1) % ecosystemImages.length)
-    }, 2000)
-
-    return () => window.clearInterval(timer)
-  }, [reducedMotion])
+  const statsCards = [
+    // Row 1 (3 cards)
+    [
+      { label: 'Founders', ticker: 'ACTIVE', val: '2,410', change: '+14.2%', positive: true, icon: Rocket },
+      { label: 'Startups', ticker: 'BUILT', val: '680+', change: '+28.5%', positive: true, icon: Zap },
+      { label: 'Capital Raised', ticker: 'FUNDING', val: '$4.2M', change: '+32.1%', positive: true, icon: Building2 },
+    ],
+    // Row 2 (4 cards)
+    [
+      { label: 'Internships', ticker: 'MATCHED', val: '1,240', change: '+18.4%', positive: true, icon: GraduationCap },
+      { label: 'Freelance Gigs', ticker: 'VOLUME', val: '$180k', change: '-2.1%', positive: false, icon: Laptop },
+      { label: 'Sandbox MVPs', ticker: 'LAUNCHED', val: '142', change: '+45.0%', positive: true, icon: TestTube2 },
+      { label: 'Mentors', ticker: 'ONLINE', val: '350+', change: '+8.9%', positive: true, icon: Star },
+    ],
+    // Row 3 (3 cards)
+    [
+      { label: 'Active Hubs', ticker: 'GLOBAL', val: '42', change: '+12.0%', positive: true, icon: Globe },
+      { label: 'Collaborations', ticker: 'COMPLETED', val: '5,800', change: '+22.4%', positive: true, icon: Users },
+      { label: 'Ecosystem Events', ticker: 'SCHEDULED', val: '120', change: '+15.3%', positive: true, icon: Calendar },
+    ],
+  ]
 
   return (
-    <section id="ecosystem" className="py-20 md:py-32 bg-transparent">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-          <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground text-balance">
-              One Platform. Every Opportunity.
-            </h2>
-            <p className="text-xl text-muted-foreground text-balance">
-              RightSignal is more than a professional network.
-            </p>
-            <p className="text-xl text-muted-foreground text-balance">
-              It&apos;s an ecosystem where ambitious people connect, collaborate, build, learn, and grow together.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Whether you&apos;re starting your first company, looking for your next career move, searching for talented people, or discovering investment opportunities, RightSignal helps you move forward with purpose.
-            </p>
-          </div>
+    <section id="ecosystem" className="relative py-24 md:py-36 overflow-hidden bg-[#0d0f1a]">
+      {/* Background Grid - Fades in ON SECTION VISIT */}
+      <m.div
+        className="absolute inset-0 bg-grid-pattern-coral pointer-events-none"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ amount: 0.1 }}
+        transition={{ duration: 1.2 }}
+      />
+      {/* Luminous Center Coral Glow - Animated on Visit */}
+      <m.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] sm:w-[1100px] h-[450px] bg-gradient-to-r from-[#FF4D8D]/40 via-[#6A53FF]/40 to-[#FF8052]/40 blur-[150px] rounded-full pointer-events-none"
+        initial={reducedMotion ? false : { opacity: 0, scale: 0.8 }}
+        whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 1.2, ease: premiumEase }}
+      />
 
-          <ParallaxFrame className="group relative min-h-[320px] overflow-hidden rounded-xl border border-border/40 bg-card/50 shadow-xl shadow-black/20 transition-colors duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 sm:min-h-[420px]">
-            <AnimatePresence initial={false}>
-              <m.div
-                key={ecosystemImages[activeImage].src}
-                className="absolute inset-0"
-                initial={reducedMotion ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={reducedMotion ? undefined : { opacity: 0 }}
-                transition={{ duration: 0.75, ease: premiumEase }}
-              >
-                <Image
-                  src={ecosystemImages[activeImage].src}
-                  alt={ecosystemImages[activeImage].alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  priority={activeImage === 0}
-                />
-              </m.div>
-            </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-t from-background/65 via-transparent to-transparent" />
-          </ParallaxFrame>
+      <div className="relative max-w-7xl mx-auto px-6 z-10">
+        {/* Title & Coral Badge */}
+        <div className="flex flex-col items-center text-center space-y-4 mb-20">
+          <div className="inline-flex items-center rounded-full border border-[#FF4D8D]/40 bg-[#FF4D8D]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#FF80B5] shadow-[0_0_20px_rgba(255,77,141,0.3)]">
+            Ecosystem Pulse ✦
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
+            Real time <span className="bg-gradient-to-r from-[#FF80B5] via-[#FF4D8D] to-[#6A53FF] bg-clip-text text-transparent">ecosystem signals</span>
+          </h2>
+          <p className="text-base sm:text-lg text-[#9DA5AF] max-w-xl">
+            Seamless discovery of active startups, funding, and verified growth connections.
+          </p>
+        </div>
+
+        {/* 3 Rows of Floating Cards (3 Top, 4 Middle, 3 Bottom) */}
+        <div className="space-y-4 max-w-6xl mx-auto">
+          {statsCards.map((row, rowIndex) => (
+            <m.div
+              key={rowIndex}
+              className={`grid gap-3.5 sm:gap-4 justify-center ${
+                rowIndex === 1
+                  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto'
+                  : 'grid-cols-1 sm:grid-cols-3 max-w-4xl mx-auto'
+              }`}
+              initial={reducedMotion ? false : { opacity: 0, y: 30 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: rowIndex * 0.15, ease: premiumEase }}
+            >
+              {row.map((card) => (
+                <SpotlightCard
+                  key={card.label}
+                  className="motion-card flex w-full flex-col rounded-2xl border border-white/10 bg-[#13152a]/80 p-5 backdrop-blur-xl shadow-[0_0_30px_rgba(0,0,0,0.3)] transition-all duration-300 hover:border-[#FF4D8D]/50 hover:shadow-[0_0_30px_rgba(255,77,141,0.25)] hover:-translate-y-1"
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex size-8 items-center justify-center rounded-xl bg-[#FF4D8D]/15 border border-[#FF4D8D]/30">
+                        <card.icon className="h-4 w-4 text-[#FF80B5]" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-foreground leading-tight">{card.label}</p>
+                        <p className="text-[10px] font-semibold text-[#9DA5AF] tracking-wider">{card.ticker}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-baseline justify-between pt-3 border-t border-white/5">
+                    <span className="text-xl font-black text-white">{card.val}</span>
+                    <span className={`text-xs font-bold ${card.positive ? 'text-[#2EC866]' : 'text-[#FF3C41]'}`}>
+                      {card.change}
+                    </span>
+                  </div>
+                </SpotlightCard>
+              ))}
+            </m.div>
+          ))}
         </div>
       </div>
     </section>

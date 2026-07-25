@@ -1,3 +1,5 @@
+'use client'
+
 import {
   BriefcaseBusiness,
   Building2,
@@ -5,102 +7,135 @@ import {
   GraduationCap,
   Laptop,
   Rocket,
+  ShieldCheck,
+  Zap,
+  Globe,
+  BarChart3,
+  Layers,
+  Users,
 } from 'lucide-react'
 import SpotlightCard from '@/components/motion/spotlight-card'
-import { StaggerContainer, StaggerItem } from '@/components/motion/stagger'
+import { m, useReducedMotion } from 'framer-motion'
+import { premiumEase } from '@/components/motion/animated-section'
+import Image from 'next/image'
 
 export default function UserSegments() {
-  const segments = [
+  const reducedMotion = useReducedMotion()
+
+  const features = [
     {
-      title: 'Founders',
-      icon: Rocket,
-      items: [
-        'Build your startup',
-        'Find teammates',
-        'Launch products',
-        'Gain users',
-        'Raise funding',
-      ],
+      icon: Users,
+      title: 'Easy to use interface',
+      description: 'An intuitive, distraction free environment focused strictly on growth and execution.',
     },
     {
-      title: 'Professionals',
-      icon: BriefcaseBusiness,
-      items: [
-        'Expand your network',
-        'Discover new opportunities',
-        'Collaborate with ambitious people',
-      ],
+      icon: Zap,
+      title: 'Fast opportunity matching',
+      description: 'Discover relevant co founders, investors, and team members instantly without algorithm delays.',
     },
     {
-      title: 'Students',
-      icon: GraduationCap,
-      items: [
-        'Gain real startup experience',
-        'Find internships',
-        'Work with founders',
-        'Build your portfolio',
-      ],
+      icon: Layers,
+      title: 'Multiple engagement modes',
+      description: 'Support for startup building, freelancing, investing, mentorship, and career acceleration.',
     },
     {
-      title: 'Freelancers',
-      icon: Laptop,
-      items: [
-        'Showcase your skills',
-        'Connect with businesses',
-        'Find meaningful projects',
-      ],
+      icon: ShieldCheck,
+      title: 'Robust profile verification',
+      description: 'Verified builder profiles, authentic portfolio history, and real startup traction metrics.',
     },
     {
-      title: 'Businesses',
-      icon: Building2,
-      items: [
-        'Hire talent',
-        'Find collaborators',
-        'Build strategic partnerships',
-      ],
+      icon: Globe,
+      title: 'Popular platform integration',
+      description: 'Seamlessly link your GitHub, pitch decks, LinkedIn, and live product demos in one signal.',
     },
     {
-      title: 'Investors',
-      icon: CircleDollarSign,
-      items: [
-        'Discover startups before everyone else',
-        'Connect with founders building real products',
-        'Explore curated funding opportunities',
-      ],
+      icon: BarChart3,
+      title: 'Comprehensive analytics',
+      description: 'Detailed reporting and analytics features to track connection signal strength and reach.',
     },
   ]
 
+  const orbitBadges = [
+    { icon: Rocket, label: 'Founders', top: '20%', left: '70%' },
+    { icon: BriefcaseBusiness, label: 'Professionals', top: '48%', left: '74%' },
+    { icon: GraduationCap, label: 'Students', top: '76%', left: '66%' },
+    { icon: Laptop, label: 'Freelancers', top: '76%', left: '16%' },
+    { icon: Building2, label: 'Businesses', top: '48%', left: '8%' },
+    { icon: CircleDollarSign, label: 'Investors', top: '20%', left: '14%' },
+  ]
+
   return (
-    <section className="py-20 md:py-32 bg-background">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="space-y-6 mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground text-balance">
-            Built For Every Growth Focused Individual
+    <section className="relative py-24 md:py-36 overflow-hidden bg-[#0d0f1a]">
+      {/* Eye-Friendly Cyan/Blue Atmosphere Glow - Fades in ON SECTION VISIT */}
+      <m.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] sm:w-[1100px] h-[450px] bg-gradient-to-r from-[#00B4D8]/30 via-[#0077B6]/20 to-[#6A53FF]/30 blur-[170px] rounded-full pointer-events-none"
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ amount: 0.2 }}
+        transition={{ duration: 1.2, ease: premiumEase }}
+      />
+      <div className="relative max-w-7xl mx-auto px-6 z-10">
+        {/* Luminous Title Pill Badge */}
+        <div className="flex flex-col items-center text-center space-y-4 mb-16">
+          <div className="inline-flex items-center rounded-full border border-[#00C3FF]/40 bg-[#00C3FF]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#70E0FF] shadow-[0_0_20px_rgba(0,195,255,0.3)]">
+            Global Ecosystem ✦
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
+            Built for growth focused <span className="bg-gradient-to-r from-[#70E0FF] via-[#00C3FF] to-[#6A53FF] bg-clip-text text-transparent">individuals worldwide</span>
           </h2>
+          <p className="text-base sm:text-lg text-[#9DA5AF] max-w-xl">
+            Connecting founders, professionals, students, freelancers, businesses, and investors seamlessly.
+          </p>
         </div>
 
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {segments.map((segment) => (
-            <StaggerItem key={segment.title}>
-              <SpotlightCard className="motion-card h-full rounded-xl border border-border/40 bg-card/50 p-6 transition-colors duration-300 hover:border-primary/50 hover:bg-card/80">
-                <div className="mb-4 flex size-11 items-center justify-center rounded-lg bg-primary/15 text-primary transition-colors group-hover:bg-primary/25">
-                  <segment.icon className="size-5 transition-transform duration-500 group-hover:scale-110" strokeWidth={1.8} aria-hidden="true" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">
-                  {segment.title}
-                </h3>
-                <ul className="space-y-3">
-                  {segment.items.map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <span className="size-1.5 rounded-full bg-primary/70" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </SpotlightCard>
-            </StaggerItem>
+        {/* Concentric Orbit Rings Graphic (Matching Screenshot 4) */}
+        <div className="relative mx-auto mb-20 flex h-[360px] sm:h-[460px] w-full max-w-3xl items-center justify-center">
+          {/* Glowing Center Logo */}
+          <div className="absolute z-20 h-16 w-16 sm:h-20 sm:w-20 drop-shadow-[0_0_40px_rgba(0,195,255,0.7)]">
+            <Image src="/logo.png" alt="RightSignal Logo" fill className="object-contain" />
+          </div>
+
+          {/* Inner Orbit Circle */}
+          <div className="absolute h-48 w-48 rounded-full border border-[#00C3FF]/25 shadow-[0_0_30px_rgba(0,195,255,0.1)]" />
+
+          {/* Middle Orbit Circle */}
+          <div className="absolute h-72 w-72 rounded-full border border-[#00C3FF]/20 shadow-[0_0_40px_rgba(0,195,255,0.1)]" />
+
+          {/* Outer Orbit Circle */}
+          <div className="absolute h-[340px] sm:h-[420px] w-[340px] sm:w-[420px] rounded-full border border-[#00C3FF]/15 shadow-[0_0_50px_rgba(0,195,255,0.1)]" />
+
+          {/* Orbit Badges Floating along the rings */}
+          {orbitBadges.map((badge, idx) => (
+            <m.div
+              key={badge.label}
+              className="absolute z-20 flex items-center gap-2 rounded-full border border-[#00C3FF]/40 bg-[#13152a]/90 px-3.5 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(0,195,255,0.3)] transition-transform duration-300 hover:scale-110"
+              style={{ top: badge.top, left: badge.left }}
+              animate={reducedMotion ? undefined : { y: [0, -6, 0] }}
+              transition={{ duration: 3, repeat: Infinity, delay: idx * 0.5, ease: 'easeInOut' }}
+            >
+              <badge.icon className="h-4 w-4 text-[#70E0FF]" />
+              <span className="text-xs font-bold text-white hidden sm:inline">{badge.label}</span>
+            </m.div>
           ))}
-        </StaggerContainer>
+        </div>
+
+        {/* 6 Feature Items 2x3 Grid (Matching Screenshot 4 Bottom Layout) */}
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+          {features.map((item) => (
+            <SpotlightCard
+              key={item.title}
+              className="motion-card flex flex-col rounded-2xl border border-white/10 bg-[#13152a]/60 p-6 backdrop-blur-md shadow-md transition-all duration-300 hover:border-[#00C3FF]/40 hover:shadow-[0_0_30px_rgba(0,195,255,0.2)]"
+            >
+              <div className="flex items-center gap-3.5 mb-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#00C3FF]/15 text-[#70E0FF] border border-[#00C3FF]/30">
+                  <item.icon className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-bold text-foreground leading-tight">{item.title}</h3>
+              </div>
+              <p className="text-xs leading-relaxed text-[#9DA5AF]">{item.description}</p>
+            </SpotlightCard>
+          ))}
+        </div>
       </div>
     </section>
   )

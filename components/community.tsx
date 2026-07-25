@@ -1,91 +1,125 @@
+'use client'
+
+import { m, useReducedMotion } from 'framer-motion'
+import SpotlightCard from '@/components/motion/spotlight-card'
+import { premiumEase } from '@/components/motion/animated-section'
 import Image from 'next/image'
-import { BriefcaseBusiness, CircleDollarSign, GraduationCap, Rocket } from 'lucide-react'
 
 export default function Community() {
-  const segments = [
-    {
-      title: 'Founders',
-      description: 'Build your startup with co-founders, investors, and mentors who get it.',
-      items: ['Find co-founders', 'Raise capital', 'Get advice'],
-      icon: Rocket,
-      image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=700&q=80',
-      imageAlt: 'Founders collaborating during a startup meeting',
-    },
-    {
-      title: 'Investors',
-      description: 'Discover high-potential founders and investment opportunities.',
-      items: ['Deal flow', 'Due diligence', 'Co-invest'],
-      icon: CircleDollarSign,
-      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=700&q=80',
-      imageAlt: 'Investor and founder discussing business growth',
-    },
-    {
-      title: 'Professionals',
-      description: 'Advance your career with strategic networking and opportunities.',
-      items: ['Career growth', 'Partnerships', 'Leadership'],
-      icon: BriefcaseBusiness,
-      image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=80',
-      imageAlt: 'Professionals working together in a modern office',
-    },
-    {
-      title: 'Students',
-      description: 'Learn from founders and prepare for your entrepreneurial journey.',
-      items: ['Mentorship', 'Internships', 'Learning'],
-      icon: GraduationCap,
-      image: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=700&q=80',
-      imageAlt: 'Student and mentor reviewing work on a laptop',
-    },
+  const reducedMotion = useReducedMotion()
+
+  const columns = [
+    // Column 1
+    [
+      {
+        quote: "I can't imagine running my startup without RightSignal. It's streamlined my connection process and saved me so much time!",
+        author: 'Sarah K.',
+        role: 'Co founder, BuildSpace',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
+      },
+      {
+        quote: "RightSignal is easy to use and provides fast and reliable opportunity matching. It's made my growth so much easier!",
+        author: 'John T.',
+        role: 'Builder, NextGen',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
+      },
+    ],
+    // Column 2
+    [
+      {
+        quote: "I love the multiple collaboration options available on RightSignal. It's convenient for my team and makes building a breeze!",
+        author: 'Maria S.',
+        role: 'Founder, PulseAI',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
+      },
+      {
+        quote: "The Sandbox startup challenge integrates seamlessly with our workflow, which has made managing milestones so much simpler.",
+        author: 'Alex G.',
+        role: 'Web Developer',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80',
+      },
+    ],
+    // Column 3
+    [
+      {
+        quote: "The security features and verified profiles of RightSignal are top notch. I feel confident that founder data is protected and verified.",
+        author: 'David H.',
+        role: 'Angel Investor',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80',
+      },
+      {
+        quote: "The reporting and signal matching features of RightSignal are so helpful for tracking our ecosystem reach. Highly recommend!",
+        author: 'Emily P.',
+        role: 'Senior Growth Analyst',
+        avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
+      },
+    ],
   ]
 
   return (
-    <section id="community" className="relative py-16 px-6 sm:py-20 overflow-hidden">
+    <section id="community" className="relative py-24 md:py-36 overflow-hidden bg-transparent">
+      {/* Pink Glow Atmosphere - Animated on Visit */}
+      <m.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[1000px] h-[400px] bg-gradient-to-r from-[#FF4D8D]/40 via-[#6A53FF]/35 to-[#FF4D8D]/40 blur-[150px] rounded-full pointer-events-none"
+        initial={reducedMotion ? false : { opacity: 0, scale: 0.8 }}
+        whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 1.2, ease: premiumEase }}
+      />
 
-
-      <div className="relative max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 text-foreground">
-            A Community for Everyone
+      <div className="relative max-w-7xl mx-auto px-6 z-10">
+        {/* Luminous Pink Badge */}
+        <div className="flex flex-col items-center text-center space-y-4 mb-20">
+          <div className="inline-flex items-center rounded-full border border-[#FF4D8D]/40 bg-[#FF4D8D]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#FF80B5] shadow-[0_0_20px_rgba(255,77,141,0.3)]">
+            Community Wall ♥
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
+            Loved by a <span className="bg-gradient-to-r from-[#FF80B5] via-[#FF4D8D] to-[#BEB4FF] bg-clip-text text-transparent">global community</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Whether you&apos;re starting out or scaling up, there&apos;s a place for you here.
+          <p className="text-base sm:text-lg text-[#9DA5AF] max-w-xl">
+            See what our satisfied ecosystem members are saying about RightSignal.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {segments.map((segment, idx) => (
-            <div
-              key={idx}
-              className="group overflow-hidden rounded-xl border border-border/40 bg-card/50 hover:border-primary/50 hover:bg-card/80 transition-all duration-300 backdrop-blur-sm"
+        {/* 3 Columns Wall */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 max-w-6xl mx-auto">
+          {columns.map((col, colIdx) => (
+            <m.div
+              key={colIdx}
+              className="flex flex-col gap-6"
+              initial={reducedMotion ? false : { opacity: 0, y: 30 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, delay: colIdx * 0.15, ease: premiumEase }}
             >
-              <div className="relative h-40">
-                <Image
-                  src={segment.image}
-                  alt={segment.imageAlt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/10 to-transparent" />
-              </div>
-              <div className="p-6">
-                <div className="w-10 h-10 rounded-lg bg-primary/20 mb-4 group-hover:bg-primary/30 transition-colors text-primary flex items-center justify-center">
-                  <segment.icon className="size-5" strokeWidth={1.8} aria-hidden="true" />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {segment.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                  {segment.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {segment.items.map((item, i) => (
-                    <span key={i} className="px-2 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+              {col.map((item, itemIdx) => (
+                <SpotlightCard
+                  key={itemIdx}
+                  className="motion-card group flex flex-col justify-between rounded-3xl border border-white/10 bg-[#13152a]/70 p-6 backdrop-blur-md shadow-md transition-all duration-500 hover:border-[#FF4D8D]/60 hover:bg-[#201833] hover:shadow-[0_0_45px_rgba(255,77,141,0.35)]"
+                >
+                  {/* Twitter / Signal Icon */}
+                  <div className="mb-4 text-[#FF80B5] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">
+                    <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.936 9.936 0 0024 4.59z"/>
+                    </svg>
+                  </div>
+
+                  <p className="text-sm font-medium leading-relaxed text-[#9DA5AF] group-hover:text-white transition-colors mb-6">
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
+
+                  <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                    <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/20">
+                      <Image src={item.avatar} alt={item.author} fill className="object-cover" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-foreground group-hover:text-[#FF80B5] transition-colors">{item.author}</p>
+                      <p className="text-xs text-[#9DA5AF]">{item.role}</p>
+                    </div>
+                  </div>
+                </SpotlightCard>
+              ))}
+            </m.div>
           ))}
         </div>
       </div>
