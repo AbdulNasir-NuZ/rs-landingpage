@@ -28,10 +28,6 @@ export default function Hero() {
         <p className="text-sm text-muted-foreground mb-4">
           No Ads. No Algorithms. Just Meaningful Opportunities.
         </p>
-
-        <a href="https://app.rightsignal.social" target="_blank" rel="noopener noreferrer" className="inline-block text-sm font-medium text-primary hover:text-accent transition-colors duration-200 underline underline-offset-4">
-          Learn More
-        </a>
       </div>
     </section>
   )
