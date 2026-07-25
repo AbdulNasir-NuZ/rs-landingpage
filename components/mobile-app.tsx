@@ -9,7 +9,7 @@ export default function MobileApp() {
   ]
 
   return (
-    <section className="py-20 md:py-32 bg-background border-t border-border/40">
+    <section className="py-20 md:py-32 bg-transparent">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">

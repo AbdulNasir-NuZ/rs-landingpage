@@ -1,95 +1,91 @@
+'use client'
+
+import {
+  CalendarDays,
+  FlaskConical,
+  Handshake,
+  Network,
+  WalletCards,
+} from 'lucide-react'
+import SpotlightCard from '@/components/motion/spotlight-card'
+import { StaggerContainer, StaggerItem } from '@/components/motion/stagger'
+
+import { m, useReducedMotion } from 'framer-motion'
+import { premiumEase } from '@/components/motion/animated-section'
+
 export default function Features() {
+  const reducedMotion = useReducedMotion()
   const features = [
     {
-      title: 'Smart Matching',
-      description: 'Connect based on shared values, expertise, and goals—not algorithms.',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.5V15m7.5-11.25l-11.313 11.313m-1.688-1.688l11.313-11.313m0 0l1.688 1.688M15 10.5h.01" />
-        </svg>
-      ),
+      title: 'Network',
+      icon: Network,
+      description: 'Meaningful connections with people who share your ambitions, not just another followers list.',
     },
     {
-      title: 'Investment Access',
-      description: 'Direct connections to venture capital, angels, and strategic investors.',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
+      title: 'Collab',
+      icon: Handshake,
+      description: 'Build Together. Whether you\'re launching a startup, building a product, or working on a project, Collab helps you find the right people and turn ideas into execution. Create & Manage your startup. Showcase your products. Build your team. Collaborate from one place.',
     },
     {
-      title: 'Collaboration Hub',
-      description: 'Find co-founders, team members, and partners for your next venture.',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-        </svg>
-      ),
+      title: 'Funding',
+      icon: WalletCards,
+      description: 'Turn Execution Into Investment. Great startups deserve visibility. The Funding ecosystem helps promising founders connect with investors, mentors, and strategic partners based on progress, not popularity. When you\'re ready to scale, the right opportunities are already within reach.',
     },
     {
-      title: 'Mentorship Network',
-      description: 'Access experienced founders and industry experts who genuinely mentor.',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17c0 5.523 4.477 10 10 10s10-4.477 10-10c0-6.002-4.5-10.747-10-10.747z" />
-        </svg>
-      ),
+      title: 'Sandbox',
+      icon: FlaskConical,
+      description: 'A four-week startup challenge where ideas become products. Submit your idea. Build a team. Launch an MVP. Validate it with real users. Pitch on Demo Day. The best startups unlock funding, mentorship, and ecosystem support.',
     },
     {
-      title: 'Opportunity Board',
-      description: 'Discover partnerships, deals, and growth opportunities from the community.',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
-    },
-    {
-      title: 'Member Events',
-      description: 'Exclusive workshops, networking sessions, and founder meetups worldwide.',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h18M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      ),
+      title: 'Events',
+      icon: CalendarDays,
+      description: 'Workshops. Networking. Startup challenges. Expert sessions. Learn from people who\'ve already built what you\'re trying to build.',
     },
   ]
 
   return (
-    <section id="features" className="relative py-16 px-6 sm:py-20 overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl opacity-30" />
-      </div>
-
-      <div className="relative max-w-6xl mx-auto">
+    <section id="features" className="relative py-20 md:py-32 bg-transparent overflow-hidden">
+      <div className="relative max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 text-foreground">
-            Powerful Features
+            Everything You Need To Grow
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to connect, collaborate, and grow with the right people.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, idx) => (
-            <div
-              key={idx}
-              className="group p-6 rounded-xl border border-border/40 bg-card/50 hover:border-primary/50 hover:bg-card/80 transition-all duration-300 backdrop-blur-sm"
+        <m.div 
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
+          initial={reducedMotion ? false : 'hidden'}
+          whileInView={reducedMotion ? undefined : 'show'}
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.25 } }
+          }}
+        >
+          {features.map((feature) => (
+            <m.div 
+              key={feature.title} 
+              className="h-full"
+              variants={{
+                hidden: { opacity: 0, y: -40, scale: 0.98 },
+                show: { opacity: 1, y: 0, scale: 1 }
+              }}
+              transition={{ duration: 0.7, ease: premiumEase }}
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/15 flex items-center justify-center mb-4 group-hover:bg-primary/25 transition-colors text-primary">
-                {feature.icon}
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
+              <SpotlightCard className="motion-card flex h-full min-h-[190px] flex-col rounded-xl border border-border/40 bg-card/50 p-5 backdrop-blur-sm transition-colors duration-300 hover:border-primary/50 hover:bg-card/80">
+                <div className="mb-5 flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary transition-colors group-hover:bg-primary/25">
+                  <feature.icon className="size-5 transition-transform duration-500 group-hover:scale-110" strokeWidth={1.8} aria-hidden="true" />
+                </div>
+                <h3 className="text-lg font-semibold leading-tight text-foreground">
+                  {feature.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {feature.description}
+                </p>
+              </SpotlightCard>
+            </m.div>
           ))}
-        </div>
+        </m.div>
       </div>
     </section>
   )

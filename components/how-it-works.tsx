@@ -23,10 +23,8 @@ export default function HowItWorks() {
   ]
 
   return (
-    <section id="how-it-works" className="relative py-16 px-6 sm:py-20 overflow-hidden border-t border-border/20">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-accent/8 rounded-full blur-3xl opacity-20" />
-      </div>
+    <section id="how-it-works" className="relative py-16 px-6 sm:py-20 overflow-hidden bg-transparent">
+
 
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-16">
