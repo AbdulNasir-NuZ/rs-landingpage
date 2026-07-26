@@ -20,10 +20,8 @@ export default function MobileDownload() {
     <section id="mobile-app" className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-transparent">
       <div className="mx-auto max-w-6xl px-6 relative z-10">
 
-        {/* Outer card — landing page theme, no hover dim on outer card */}
-        <div className="relative rounded-3xl border border-white/10 bg-[#13152a]/60 p-8 shadow-[0_0_40px_rgba(106,83,255,0.08)] backdrop-blur-xl sm:p-12 lg:p-16">
-          {/* Subtle top sheen */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-3xl bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        {/* Outer card — SpotlightCard effect matching roadmap and other sections */}
+        <SpotlightCard className="rounded-3xl border border-white/10 bg-[#13152a]/60 p-8 shadow-[0_0_40px_rgba(106,83,255,0.08)] sm:p-12 lg:p-16 hover:border-[#8B7AFF]/40 hover:shadow-[0_0_50px_rgba(139,122,255,0.2)]">
 
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center relative z-10">
 
@@ -87,7 +85,7 @@ export default function MobileDownload() {
 
             </div>
           </div>
-        </div>
+        </SpotlightCard>
 
       </div>
     </section>
