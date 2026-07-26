@@ -2,10 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Download } from 'lucide-react'
 import { m, useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { premiumEase } from './motion/animated-section'
+import { APP_DOWNLOAD_URL } from '@/lib/config'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)

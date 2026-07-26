@@ -13,7 +13,7 @@ import AnimatedSection from '@/components/motion/animated-section'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background overflow-x-hidden w-full max-w-full">
       <Header />
       {/* 1. Hero with Luminous Subscribe Input & Badges */}
       <Hero />

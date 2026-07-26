@@ -12,10 +12,10 @@ export default function Footer() {
   return (
     <footer className="relative bg-[#07080e] text-foreground overflow-hidden">
       {/* Upper CTA Section (Matching Screenshot 2 & 3) */}
-      <div className="relative py-28 md:py-40 text-center px-6 overflow-hidden">
+      <div className="relative py-16 sm:py-20 lg:py-24 text-center px-6 overflow-hidden">
         {/* Luminous Purple Glow Dome Underneath - Animated on Visit */}
         <m.div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1000px] h-[350px] sm:h-[450px] bg-gradient-to-t from-[#6A53FF]/60 via-[#8B7AFF]/35 to-transparent blur-[140px] rounded-full pointer-events-none"
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] sm:w-[950px] h-[320px] sm:h-[400px] bg-gradient-to-t from-[#6A53FF]/60 via-[#8B7AFF]/35 to-transparent blur-[100px] rounded-full pointer-events-none"
           initial={reducedMotion ? false : { opacity: 0, scale: 0.8 }}
           whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
           viewport={{ once: false, amount: 0.2 }}
@@ -30,15 +30,15 @@ export default function Footer() {
           transition={{ duration: 0.8, ease: premiumEase }}
         >
           {/* Clean Large Logo */}
-          <div className="relative mb-8 h-16 w-16 sm:h-20 sm:w-20 drop-shadow-[0_0_35px_rgba(106,83,255,0.6)]">
+          <div className="relative mb-5 h-14 w-14 sm:h-16 sm:w-16 drop-shadow-[0_0_35px_rgba(106,83,255,0.6)]">
             <Image src="/logo.png" alt="RightSignal Logo" fill className="object-contain" priority />
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
             Get started today for free
           </h2>
 
-          <p className="text-base sm:text-lg text-[#9DA5AF] max-w-xl mb-10 leading-relaxed font-normal">
+          <p className="text-sm sm:text-base text-[#9DA5AF] max-w-xl mb-8 leading-relaxed font-normal">
             Streamline your growth with effortless ecosystem integration for builders, founders, and investors.
           </p>
 

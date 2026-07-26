@@ -57,10 +57,10 @@ export default function Community() {
   ]
 
   return (
-    <section id="community" className="relative py-24 md:py-36 overflow-hidden bg-transparent">
+    <section id="community" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden bg-transparent">
       {/* Pink Glow Atmosphere - Animated on Visit */}
       <m.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[1000px] h-[400px] bg-gradient-to-r from-[#FF4D8D]/40 via-[#6A53FF]/35 to-[#FF4D8D]/40 blur-[150px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] sm:w-[900px] h-[350px] bg-gradient-to-r from-[#FF4D8D]/35 via-[#6A53FF]/30 to-[#FF4D8D]/35 blur-[100px] rounded-full pointer-events-none"
         initial={reducedMotion ? false : { opacity: 0, scale: 0.8 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
         viewport={{ once: false, amount: 0.2 }}
@@ -69,14 +69,14 @@ export default function Community() {
 
       <div className="relative max-w-7xl mx-auto px-6 z-10">
         {/* Luminous Pink Badge */}
-        <div className="flex flex-col items-center text-center space-y-4 mb-20">
+        <div className="flex flex-col items-center text-center space-y-3 mb-10 sm:mb-12">
           <div className="inline-flex items-center rounded-full border border-[#FF4D8D]/40 bg-[#FF4D8D]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#FF80B5] shadow-[0_0_20px_rgba(255,77,141,0.3)]">
             Community Wall ♥
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
             Loved by a <span className="bg-gradient-to-r from-[#FF80B5] via-[#FF4D8D] to-[#BEB4FF] bg-clip-text text-transparent">global community</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#9DA5AF] max-w-xl">
+          <p className="text-sm sm:text-base text-[#9DA5AF] max-w-xl">
             See what our satisfied ecosystem members are saying about RightSignal.
           </p>
         </div>

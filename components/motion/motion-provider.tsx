@@ -11,9 +11,13 @@ export default function MotionProvider({ children }: { children: React.ReactNode
     if (reducedMotion) return
 
     const lenis = new Lenis({
-      duration: 1.05,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
+      syncTouch: false,
+      autoResize: true,
     })
 
     let frame = 0

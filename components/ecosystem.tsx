@@ -31,18 +31,18 @@ export default function Ecosystem() {
   ]
 
   return (
-    <section id="ecosystem" className="relative py-24 md:py-36 overflow-hidden bg-[#0d0f1a]">
-      {/* Background Grid - Fades in ON SECTION VISIT */}
+    <section id="ecosystem" className="relative py-16 sm:py-20 lg:py-24 bg-transparent overflow-hidden">
+      {/* Subtle Grid Pattern inside Coral Atmosphere */}
       <m.div
-        className="absolute inset-0 bg-grid-pattern-coral pointer-events-none"
+        className="absolute inset-0 bg-grid-pattern-coral pointer-events-none opacity-40"
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        whileInView={{ opacity: 0.4 }}
         viewport={{ amount: 0.1 }}
         transition={{ duration: 1.2 }}
       />
       {/* Luminous Center Coral Glow - Animated on Visit */}
       <m.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] sm:w-[1100px] h-[450px] bg-gradient-to-r from-[#FF4D8D]/40 via-[#6A53FF]/40 to-[#FF8052]/40 blur-[150px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] sm:w-[950px] h-[380px] bg-gradient-to-r from-[#FF4D8D]/35 via-[#6A53FF]/35 to-[#FF8052]/35 blur-[100px] rounded-full pointer-events-none"
         initial={reducedMotion ? false : { opacity: 0, scale: 0.8 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
         viewport={{ once: false, amount: 0.2 }}
@@ -51,14 +51,14 @@ export default function Ecosystem() {
 
       <div className="relative max-w-7xl mx-auto px-6 z-10">
         {/* Title & Coral Badge */}
-        <div className="flex flex-col items-center text-center space-y-4 mb-20">
+        <div className="flex flex-col items-center text-center space-y-3 mb-10 sm:mb-12">
           <div className="inline-flex items-center rounded-full border border-[#FF4D8D]/40 bg-[#FF4D8D]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#FF80B5] shadow-[0_0_20px_rgba(255,77,141,0.3)]">
             Ecosystem Pulse ✦
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
             Real time <span className="bg-gradient-to-r from-[#FF80B5] via-[#FF4D8D] to-[#6A53FF] bg-clip-text text-transparent">ecosystem signals</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#9DA5AF] max-w-xl">
+          <p className="text-sm sm:text-base text-[#9DA5AF] max-w-xl">
             Seamless discovery of active startups, funding, and verified growth connections.
           </p>
         </div>

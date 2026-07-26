@@ -16,13 +16,13 @@ export default function Journey() {
   ]
 
   return (
-    <section id="journey" className="py-24 md:py-32 relative bg-transparent">
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center text-center space-y-6 mb-20">
+    <section id="journey" className="py-16 sm:py-20 lg:py-24 relative bg-transparent overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col items-center text-center space-y-3 mb-10 sm:mb-12">
           <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-[#8B7AFF] shadow-sm">
             Roadmap ✦
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground text-balance">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance">
             Your Journey <span className="bg-gradient-to-r from-[#BEB4FF] to-[#6A53FF] bg-clip-text text-transparent">Starts Here</span>
           </h2>
         </div>

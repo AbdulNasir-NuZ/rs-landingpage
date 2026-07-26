@@ -1,3 +1,5 @@
+import { APP_DOWNLOAD_URL } from '@/lib/config'
+
 export default function MobileApp() {
   const features = [
     'Stay connected wherever you are',
@@ -35,19 +37,17 @@ export default function MobileApp() {
 
             <div className="space-y-3 pt-4">
               <p className="text-sm text-muted-foreground">
-                Available on iOS and Android
+                Available via APK Download
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-6 py-3 bg-foreground text-background font-medium rounded-md hover:opacity-90 transition-opacity">
-                  App Store
-                </button>
-                <button className="px-6 py-3 border border-border text-foreground font-medium rounded-md hover:bg-secondary transition-colors">
-                  Google Play
-                </button>
+                <a
+                  href={APP_DOWNLOAD_URL}
+                  download="rightsignal.apk"
+                  className="px-6 py-3 bg-[#2EC866] text-black font-semibold rounded-xl hover:bg-[#57E08B] transition-colors inline-flex items-center gap-2 justify-center"
+                >
+                  Download RightSignal APK
+                </a>
               </div>
-              <p className="text-xs text-muted-foreground pt-2">
-                Coming Soon
-              </p>
             </div>
           </div>
 

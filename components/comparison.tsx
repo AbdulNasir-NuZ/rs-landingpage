@@ -19,7 +19,7 @@ export default function Comparison() {
   ]
 
   return (
-    <section id="why-rightsignal" className="py-24 md:py-32 relative bg-[#0d0f1a] overflow-hidden">
+    <section id="why-rightsignal" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden bg-[#0d0f1a]">
       {/* Background Grid - Fades in ON SECTION VISIT */}
       <m.div
         className="absolute inset-0 bg-grid-pattern pointer-events-none"
@@ -30,18 +30,18 @@ export default function Comparison() {
       />
       {/* Luminous Purple Glow Dome - Animated on Section Visit */}
       <m.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1050px] h-[450px] bg-gradient-to-r from-[#6A53FF]/45 via-[#8B7AFF]/35 to-[#6A53FF]/45 blur-[150px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[950px] h-[380px] bg-gradient-to-r from-[#6A53FF]/40 via-[#8B7AFF]/30 to-[#6A53FF]/40 blur-[100px] rounded-full pointer-events-none"
         initial={reducedMotion ? false : { opacity: 0, scale: 0.8 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
         viewport={{ once: false, amount: 0.2 }}
         transition={{ duration: 1.2, ease: premiumEase }}
       />
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center text-center space-y-6 mb-20">
+        <div className="flex flex-col items-center text-center space-y-3 mb-10 sm:mb-12">
           <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-[#8B7AFF] shadow-sm">
             Comparison ✦
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground text-balance">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground text-balance">
             Why <span className="bg-gradient-to-r from-[#BEB4FF] to-[#6A53FF] bg-clip-text text-transparent">RightSignal?</span>
           </h2>
         </div>

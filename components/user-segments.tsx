@@ -65,10 +65,10 @@ export default function UserSegments() {
   ]
 
   return (
-    <section className="relative py-24 md:py-36 overflow-hidden bg-[#0d0f1a]">
+    <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden bg-[#0d0f1a]">
       {/* Eye-Friendly Cyan/Blue Atmosphere Glow - Fades in ON SECTION VISIT */}
       <m.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] sm:w-[1100px] h-[450px] bg-gradient-to-r from-[#00B4D8]/30 via-[#0077B6]/20 to-[#6A53FF]/30 blur-[170px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[950px] h-[380px] bg-gradient-to-r from-[#00B4D8]/30 via-[#0077B6]/20 to-[#6A53FF]/30 blur-[100px] rounded-full pointer-events-none"
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ amount: 0.2 }}
@@ -76,14 +76,14 @@ export default function UserSegments() {
       />
       <div className="relative max-w-7xl mx-auto px-6 z-10">
         {/* Luminous Title Pill Badge */}
-        <div className="flex flex-col items-center text-center space-y-4 mb-16">
+        <div className="flex flex-col items-center text-center space-y-3 mb-10 sm:mb-12">
           <div className="inline-flex items-center rounded-full border border-[#00C3FF]/40 bg-[#00C3FF]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#70E0FF] shadow-[0_0_20px_rgba(0,195,255,0.3)]">
             Global Ecosystem ✦
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
             Built for growth focused <span className="bg-gradient-to-r from-[#70E0FF] via-[#00C3FF] to-[#6A53FF] bg-clip-text text-transparent">individuals worldwide</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#9DA5AF] max-w-xl">
+          <p className="text-sm sm:text-base text-[#9DA5AF] max-w-xl">
             Connecting founders, professionals, students, freelancers, businesses, and investors seamlessly.
           </p>
         </div>

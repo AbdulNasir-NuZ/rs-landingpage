@@ -1,11 +1,11 @@
 'use client'
 
-import Image from 'next/image'
 import { Bell, Handshake, Search, UserRound } from 'lucide-react'
 import SpotlightCard from '@/components/motion/spotlight-card'
 import { StaggerContainer, StaggerItem } from '@/components/motion/stagger'
 import { m, useReducedMotion } from 'framer-motion'
 import { premiumEase } from '@/components/motion/animated-section'
+import { APP_DOWNLOAD_URL } from '@/lib/config'
 
 export default function MobileDownload() {
   const reducedMotion = useReducedMotion()
@@ -16,23 +16,27 @@ export default function MobileDownload() {
     { text: 'Discover opportunities.', icon: Search },
   ]
 
-  const badgeHoverSettings = reducedMotion ? undefined : {
-    y: -3,
-    scale: 1.02,
-    boxShadow: '0 12px 30px rgba(106, 83, 255, 0.25)',
-  }
-
   return (
-    <section id="mobile-app" className="relative overflow-hidden py-24 md:py-32 bg-transparent">
+    <section id="mobile-app" className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-transparent">
       <div className="mx-auto max-w-6xl px-6 relative z-10">
-        <SpotlightCard className="motion-card rounded-3xl border border-white/10 bg-[#13152a]/60 p-8 shadow-[0_0_40px_rgba(106,83,255,0.08)] backdrop-blur-xl sm:p-12 lg:p-16">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+
+        {/* Outer card — landing page theme, no hover dim on outer card */}
+        <div className="relative rounded-3xl border border-white/10 bg-[#13152a]/60 p-8 shadow-[0_0_40px_rgba(106,83,255,0.08)] backdrop-blur-xl sm:p-12 lg:p-16">
+          {/* Subtle top sheen */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px rounded-t-3xl bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center relative z-10">
+
+            {/* Left column */}
             <div className="space-y-6">
               <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-[#8B7AFF] shadow-sm">
                 Mobile App ✦
               </div>
-              <h2 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-                Download the <br /> <span className="bg-gradient-to-r from-[#BEB4FF] to-[#6A53FF] bg-clip-text text-transparent">RightSignal App</span>
+              <h2 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl leading-tight">
+                Download the <br />
+                <span className="bg-gradient-to-r from-[#BEB4FF] to-[#6A53FF] bg-clip-text text-transparent">
+                  RightSignal App
+                </span>
               </h2>
               <div className="mt-6 space-y-3 text-lg text-[#9DA5AF] font-medium">
                 <p>Opportunities Don&apos;t Wait.</p>
@@ -40,66 +44,51 @@ export default function MobileDownload() {
               </div>
             </div>
 
+            {/* Right column */}
             <div className="space-y-8">
+
+              {/* Feature cards — each wrapped in SpotlightCard like roadmap */}
               <StaggerContainer className="grid gap-4 sm:grid-cols-2">
                 {appFeatures.map((feature) => (
                   <StaggerItem key={feature.text}>
-                    <div className="flex items-center gap-4 rounded-2xl border border-white/5 bg-white/5 p-4 transition-colors duration-300 hover:border-[#8B7AFF]/30 hover:bg-white/10">
-                      <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#6A53FF]/20 text-[#BEB4FF] shadow-[0_0_10px_rgba(106,83,255,0.2)]">
-                        <feature.icon className="size-5 transition-transform duration-500 group-hover:scale-110" strokeWidth={1.8} aria-hidden="true" />
+                    <SpotlightCard className="rounded-2xl border border-white/10 bg-[#13152a]/70 p-4 shadow-xl hover:border-[#8B7AFF]/50 hover:shadow-[0_0_35px_rgba(139,122,255,0.25)]">
+                      <div className="flex items-center gap-4">
+                        <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#6A53FF]/20 text-[#BEB4FF] shadow-[0_0_10px_rgba(106,83,255,0.2)]">
+                          <feature.icon className="size-5" strokeWidth={1.8} aria-hidden="true" />
+                        </div>
+                        <span className="font-semibold text-foreground">{feature.text}</span>
                       </div>
-                      <span className="font-semibold text-foreground">{feature.text}</span>
-                    </div>
+                    </SpotlightCard>
                   </StaggerItem>
                 ))}
               </StaggerContainer>
 
-              <div className="flex flex-col gap-5 sm:flex-row sm:items-center pt-8">
-                {/* Apple App Store Badge */}
-                <m.a
-                  href="https://app.rightsignal.social"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative flex items-center gap-4 rounded-2xl bg-black px-6 py-3.5 border border-white/20 shadow-xl transition-all duration-300 hover:border-[#6A53FF] hover:shadow-[0_0_25px_rgba(106,83,255,0.35)] hover:scale-105 active:scale-95"
-                  whileHover={badgeHoverSettings}
-                  whileTap={reducedMotion ? undefined : { scale: 0.98 }}
-                >
-                  <svg className="h-8 w-8 fill-white shrink-0" viewBox="0 0 384 512">
-                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-92.1zm-56.1-177.1c25.4-30.8 22.3-59.5 21.6-67.6-22.6 1.3-50.5 15.5-66.2 33.8-16.6 19.3-24.5 45.4-21.7 66.8 25.6.8 50.7-13.8 66.3-33z"/>
-                  </svg>
-                  <div className="flex flex-col text-left">
-                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#9DA5AF]">Download on the</span>
-                    <span className="text-lg font-bold text-white tracking-wide leading-none mt-1">App Store</span>
-                  </div>
-                </m.a>
-
-                {/* Google Play Store Badge */}
-                <m.a
-                  href="https://app.rightsignal.social"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative flex items-center gap-4 rounded-2xl bg-black px-6 py-3.5 border border-white/20 shadow-xl transition-all duration-300 hover:border-[#00C3FF] hover:shadow-[0_0_25px_rgba(0,195,255,0.35)] hover:scale-105 active:scale-95"
-                  whileHover={badgeHoverSettings}
-                  whileTap={reducedMotion ? undefined : { scale: 0.98 }}
-                >
-                  <div className="relative h-8 w-8 shrink-0 rounded-lg overflow-hidden flex items-center justify-center">
-                    <Image
-                      src="/google-play-v2.png"
-                      alt="Google Play Logo"
-                      fill
-                      className="object-contain rounded-lg"
-                      priority
-                    />
-                  </div>
-                  <div className="flex flex-col text-left">
-                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#9DA5AF]">GET IT ON</span>
-                    <span className="text-lg font-bold text-white tracking-wide leading-none mt-1">Google Play</span>
-                  </div>
-                </m.a>
+              {/* APKPure button — also wrapped in SpotlightCard */}
+              <div className="pt-4 border-t border-white/10">
+                <SpotlightCard className="inline-flex rounded-2xl border border-white/10 bg-[#13152a]/70 shadow-xl hover:border-[#8B7AFF]/50 hover:shadow-[0_0_35px_rgba(139,122,255,0.25)]">
+                  <a
+                    href={APP_DOWNLOAD_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/btn inline-flex items-center gap-4 px-7 py-3.5"
+                  >
+                    <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#2EC866]/20 text-[#2EC866] border border-[#2EC866]/40 shadow-[0_0_15px_rgba(46,200,102,0.3)] transition-transform duration-300 group-hover/btn:scale-110">
+                      <svg className="size-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.3l6.5 3.6-6.5 3.6-6.5-3.6L12 4.3zM5 8.9l6 3.3v6.5l-6-3.3V8.9zm14 6.5l-6 3.3v-6.5l6-3.3v6.5z"/>
+                      </svg>
+                    </div>
+                    <div className="flex flex-col text-left">
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-[#9DA5AF] group-hover/btn:text-white/80 transition-colors">GET IT ON</span>
+                      <span className="text-xl font-extrabold text-white tracking-wide leading-none mt-0.5">APKPure</span>
+                    </div>
+                  </a>
+                </SpotlightCard>
               </div>
+
             </div>
           </div>
-        </SpotlightCard>
+        </div>
+
       </div>
     </section>
   )

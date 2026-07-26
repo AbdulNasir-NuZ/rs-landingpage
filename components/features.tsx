@@ -83,10 +83,10 @@ export default function Features() {
   ]
 
   return (
-    <section id="features" className="relative py-24 md:py-36 bg-transparent overflow-hidden">
+    <section id="features" className="relative py-16 sm:py-20 lg:py-24 bg-transparent overflow-hidden">
       {/* Luminous Purple Glow Atmosphere - Animated on Visit */}
       <m.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1000px] h-[400px] bg-gradient-to-r from-[#6A53FF]/45 via-[#8B7AFF]/40 to-[#6A53FF]/45 blur-[150px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[350px] bg-gradient-to-r from-[#6A53FF]/40 via-[#8B7AFF]/35 to-[#6A53FF]/40 blur-[100px] rounded-full pointer-events-none"
         initial={reducedMotion ? false : { opacity: 0, scale: 0.8 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
         viewport={{ once: false, amount: 0.2 }}
@@ -94,14 +94,14 @@ export default function Features() {
       />
       <div className="relative max-w-7xl mx-auto px-6 z-10">
         {/* Luminous Title Pill Badge */}
-        <div className="flex flex-col items-center text-center space-y-4 mb-20">
+        <div className="flex flex-col items-center text-center space-y-3 mb-10 sm:mb-12">
           <div className="inline-flex items-center rounded-full border border-[#6A53FF]/40 bg-[#6A53FF]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#BEB4FF] shadow-[0_0_15px_rgba(106,83,255,0.3)]">
             Our Features ✦
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
             Essential features to <span className="bg-gradient-to-r from-[#BEB4FF] via-[#8B7AFF] to-[#6A53FF] bg-clip-text text-transparent">get started</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#9DA5AF] max-w-xl">
+          <p className="text-sm sm:text-base text-[#9DA5AF] max-w-xl">
             Key features to look for in a reliable growth & collaboration ecosystem.
           </p>
         </div>

@@ -4,18 +4,45 @@ import { m, useReducedMotion } from 'framer-motion'
 import { premiumEase } from '@/components/motion/animated-section'
 import Image from 'next/image'
 import { useState } from 'react'
-import { ArrowRight, CheckCircle2, Rocket, Building2, Zap, Target, Globe, Coins, TrendingUp, Layers, Briefcase } from 'lucide-react'
+import { ArrowRight, CheckCircle2, Rocket, Building2, Zap, Target, Globe, Coins, TrendingUp, Layers, Briefcase, Loader2, AlertCircle } from 'lucide-react'
 
 export default function Hero() {
   const reducedMotion = useReducedMotion()
   const [email, setEmail] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (email) {
-      setSubmitted(true)
-      setTimeout(() => setSubmitted(false), 4000)
+    if (!email || isSubmitting) return
+
+    setIsSubmitting(true)
+    setErrorMsg('')
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setErrorMsg(data.error || 'Something went wrong. Please try again.')
+        setTimeout(() => setErrorMsg(''), 4500)
+      } else {
+        setSubmitted(true)
+        setEmail('')
+        setTimeout(() => setSubmitted(false), 4500)
+      }
+    } catch (err) {
+      console.error('Subscription error:', err)
+      setErrorMsg('Failed to subscribe. Check your internet connection.')
+      setTimeout(() => setErrorMsg(''), 4500)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -39,7 +66,7 @@ export default function Hero() {
   ]
 
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32 bg-[#0d0f1a]">
+    <section className="relative overflow-hidden pt-20 pb-8 sm:pt-24 sm:pb-10 lg:pt-28 lg:pb-12 bg-[#0d0f1a]">
       {/* Background Grid - Fades in ON SECTION VISIT */}
       <m.div
         className="absolute inset-0 bg-grid-pattern pointer-events-none"
@@ -51,7 +78,7 @@ export default function Hero() {
 
       {/* Luminous Top Purple Glow Dome - Animated on Visit */}
       <m.div
-        className="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1100px] h-[400px] sm:h-[550px] bg-gradient-to-b from-[#6A53FF]/65 via-[#8B7AFF]/40 to-transparent blur-[140px] rounded-full pointer-events-none"
+        className="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1000px] h-[350px] sm:h-[450px] bg-gradient-to-b from-[#6A53FF]/60 via-[#8B7AFF]/35 to-transparent blur-[100px] rounded-full pointer-events-none"
         initial={{ opacity: 0, scale: 0.85 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ amount: 0.1 }}
@@ -69,7 +96,7 @@ export default function Hero() {
       >
         {/* Clean Large Hero Logo */}
         <m.div
-          className="relative mx-auto mb-8 h-16 w-16 sm:h-20 sm:w-20 drop-shadow-[0_0_35px_rgba(106,83,255,0.6)]"
+          className="relative mx-auto mb-3 h-12 w-12 sm:h-14 sm:w-14 drop-shadow-[0_0_35px_rgba(106,83,255,0.6)]"
           variants={{
             hidden: { opacity: 0, y: 20, scale: 0.9 },
             show: { opacity: 1, y: 0, scale: 1 },
@@ -81,7 +108,7 @@ export default function Hero() {
 
         {/* Heading */}
         <m.h1
-          className="mx-auto mb-6 max-w-4xl text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl lg:text-7xl leading-[1.1]"
+          className="mx-auto mb-3 max-w-4xl text-3xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl leading-[1.15]"
           variants={{
             hidden: { opacity: 0, y: 30 },
             show: { opacity: 1, y: 0 },
@@ -96,7 +123,7 @@ export default function Hero() {
 
         {/* Subtitle */}
         <m.p
-          className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-[#9DA5AF] sm:text-lg lg:text-xl font-normal"
+          className="mx-auto mb-5 max-w-2xl text-sm leading-relaxed text-[#9DA5AF] sm:text-base lg:text-lg font-normal"
           variants={{
             hidden: { opacity: 0, y: 20 },
             show: { opacity: 1, y: 0 },
@@ -108,7 +135,7 @@ export default function Hero() {
 
         {/* Luminous Email Subscribe Input */}
         <m.div
-          className="mx-auto max-w-md mb-16"
+          className="mx-auto max-w-md mb-6"
           variants={{
             hidden: { opacity: 0, y: 18 },
             show: { opacity: 1, y: 0 },
@@ -121,14 +148,21 @@ export default function Hero() {
               placeholder="Enter your email..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              disabled={isSubmitting}
               required
-              className="w-full bg-transparent px-5 py-3 text-sm text-foreground placeholder-[#9DA5AF]/70 outline-none focus:ring-0"
+              className="w-full bg-transparent px-5 py-2.5 text-sm text-foreground placeholder-[#9DA5AF]/70 outline-none focus:ring-0 disabled:opacity-60"
             />
             <button
               type="submit"
-              className="flex shrink-0 items-center gap-2 rounded-full bg-[#6A53FF] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-[#8B7AFF] hover:shadow-[0_0_20px_rgba(106,83,255,0.5)] active:scale-95"
+              disabled={isSubmitting}
+              className="flex shrink-0 items-center gap-2 rounded-full bg-[#6A53FF] px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-all hover:bg-[#8B7AFF] hover:shadow-[0_0_20px_rgba(106,83,255,0.5)] active:scale-95 disabled:opacity-75 disabled:pointer-events-none"
             >
-              {submitted ? (
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin text-white" />
+                  <span>Joining...</span>
+                </>
+              ) : submitted ? (
                 <>
                   <CheckCircle2 className="h-4 w-4 text-white" />
                   <span>Joined!</span>
@@ -141,60 +175,75 @@ export default function Hero() {
               )}
             </button>
           </form>
-          <p className="mt-3 text-xs text-[#9DA5AF]/70">No ads. No algorithms. Just meaningful opportunities.</p>
+          {errorMsg ? (
+            <p className="mt-2.5 flex items-center justify-center gap-1.5 text-xs font-medium text-red-400">
+              <AlertCircle className="h-3.5 w-3.5" />
+              <span>{errorMsg}</span>
+            </p>
+          ) : submitted ? (
+            <p className="mt-2.5 flex items-center justify-center gap-1.5 text-xs font-medium text-emerald-400">
+              <CheckCircle2 className="h-3.5 w-3.5" />
+              <span>Welcome to the RightSignal ecosystem!</span>
+            </p>
+          ) : (
+            <p className="mt-2 text-xs text-[#9DA5AF]/70">No ads. No algorithms. Just meaningful opportunities.</p>
+          )}
         </m.div>
 
-        {/* Ecosystem Categories Row */}
+        {/* Infinite Horizontal Metric Pills Marquee — inside hero, breaks out of px-6 */}
         <m.div
-          className="pt-8 flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-70 mb-14"
-          variants={{
-            hidden: { opacity: 0 },
-            show: { opacity: 0.7 },
-          }}
-          transition={{ duration: 1, delay: 0.3 }}
+          className="relative -mx-6 overflow-hidden py-3 mb-6"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.45, ease: 'easeOut' }}
         >
-          {ecosystems.map((item) => (
-            <div key={item.name} className="flex items-center gap-2 font-bold tracking-widest text-xs sm:text-sm text-[#9DA5AF] hover:text-white transition-colors">
-              <item.icon className="h-4 w-4 text-[#8B7AFF]" />
-              <span>{item.name}</span>
-            </div>
-          ))}
-        </m.div>
+          {/* Smooth Edge Fade Masks */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 sm:w-32 bg-gradient-to-r from-[#0d0f1a] via-[#0d0f1a]/80 to-transparent z-20" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 sm:w-32 bg-gradient-to-l from-[#0d0f1a] via-[#0d0f1a]/80 to-transparent z-20" />
 
-        {/* Infinite Horizontal Metric Pills Marquee (Moving Right to Left) */}
-        <m.div
-          className="relative overflow-hidden py-4 -mx-6 px-6"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ amount: 0.1 }}
-          transition={{ duration: 1, delay: 0.4 }}
-        >
-          {/* Smooth Edge Fade Mask (Clean Edge Entry & Exit) */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#0d0f1a] via-[#0d0f1a]/90 to-transparent z-20" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#0d0f1a] via-[#0d0f1a]/90 to-transparent z-20" />
-
-          <div className="flex w-max gap-4 py-2">
+          <div className="flex w-max gap-4 px-6">
             <m.div
               className="flex gap-4 shrink-0"
               animate={reducedMotion ? undefined : { x: ['0%', '-50%'] }}
-              transition={{ repeat: Infinity, ease: 'linear', duration: 25 }}
+              transition={{ repeat: Infinity, ease: 'linear', duration: 28 }}
             >
               {[...tickerCards, ...tickerCards].map((card, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-3 shrink-0 rounded-2xl border border-white/10 bg-[#13152a]/80 px-4 py-2.5 backdrop-blur-md shadow-md transition-all duration-300 hover:border-[#6A53FF]/60 hover:shadow-[0_0_20px_rgba(106,83,255,0.3)]"
+                  className="flex items-center gap-4 shrink-0 rounded-2xl border border-white/10 bg-[#13152a]/80 px-6 py-4 backdrop-blur-md shadow-md transition-all duration-300 hover:border-[#6A53FF]/60 hover:shadow-[0_0_24px_rgba(106,83,255,0.35)]"
                 >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#6A53FF]/15 border border-[#6A53FF]/30">
-                    <card.icon className="h-4 w-4 text-[#BEB4FF]" />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#6A53FF]/15 border border-[#6A53FF]/30">
+                    <card.icon className="h-5 w-5 text-[#BEB4FF]" />
                   </div>
-                  <div className="text-left pr-2">
-                    <p className="text-xs font-bold text-white leading-tight">{card.name}</p>
-                    <p className="text-[10px] text-[#9DA5AF] font-medium">{card.symbol}</p>
+                  <div className="text-left">
+                    <p className="text-base font-bold text-white leading-tight">{card.name}</p>
+                    <p className="text-xs text-[#9DA5AF] font-medium mt-0.5">{card.symbol}</p>
                   </div>
                 </div>
               ))}
             </m.div>
           </div>
+        </m.div>
+
+        {/* Ecosystem Categories Row */}
+        <m.div
+          className="pt-2 flex flex-wrap items-center justify-center gap-6 sm:gap-12"
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1 },
+          }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          {ecosystems.map((item) => (
+            <div
+              key={item.name}
+              className="group flex items-center gap-2 font-bold tracking-widest text-xs sm:text-sm text-[#9DA5AF] transition-all duration-300 hover:text-white cursor-default"
+              style={{ textShadow: 'none' }}
+            >
+              <item.icon className="h-4 w-4 text-[#8B7AFF] transition-all duration-300 group-hover:text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]" />
+              <span className="transition-all duration-300 group-hover:[text-shadow:0_0_12px_rgba(255,255,255,1),0_0_24px_rgba(255,255,255,0.6)]">{item.name}</span>
+            </div>
+          ))}
         </m.div>
       </m.div>
     </section>

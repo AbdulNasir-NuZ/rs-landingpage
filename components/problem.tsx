@@ -42,18 +42,18 @@ if (match.status === 200) {
 }`
 
   return (
-    <section className="relative py-24 md:py-36 overflow-hidden bg-[#0d0f1a]">
-      {/* Background Grid - Fades in ON SECTION VISIT */}
+    <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden bg-[#0d0f1a]">
+      {/* Subtle Grid Pattern inside Green Atmosphere */}
       <m.div
-        className="absolute inset-0 bg-grid-pattern-green pointer-events-none"
+        className="absolute inset-0 bg-grid-pattern-green pointer-events-none opacity-40"
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        whileInView={{ opacity: 0.4 }}
         viewport={{ amount: 0.1 }}
         transition={{ duration: 1.2 }}
       />
       {/* Luminous Center Green Glow - Animated on Visit */}
       <m.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1050px] h-[450px] bg-gradient-to-r from-[#2EC866]/40 via-[#00C3FF]/30 to-[#2EC866]/40 blur-[150px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[900px] h-[380px] bg-gradient-to-r from-[#2EC866]/35 via-[#00C3FF]/25 to-[#2EC866]/35 blur-[100px] rounded-full pointer-events-none"
         initial={reducedMotion ? false : { opacity: 0, scale: 0.8 }}
         whileInView={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
         viewport={{ once: false, amount: 0.2 }}
@@ -62,14 +62,14 @@ if (match.status === 200) {
 
       <div className="relative max-w-7xl mx-auto px-6 z-10">
         {/* Luminous Title Pill Badge (Screenshot 5 Green Badge) */}
-        <div className="flex flex-col items-center text-center space-y-4 mb-20">
+        <div className="flex flex-col items-center text-center space-y-3 mb-10 sm:mb-12">
           <div className="inline-flex items-center rounded-full border border-[#2EC866]/40 bg-[#2EC866]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#57E08B] shadow-[0_0_20px_rgba(46,200,102,0.3)]">
             Implementation ✦
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
             A simple signal <span className="bg-gradient-to-r from-[#57E08B] via-[#2EC866] to-[#00C3FF] bg-clip-text text-transparent">is all it takes</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#9DA5AF] max-w-xl">
+          <p className="text-sm sm:text-base text-[#9DA5AF] max-w-xl">
             Effortlessly broadcast your goals, recruit talent, and discover your next big milestone.
           </p>
         </div>
